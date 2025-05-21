@@ -16,7 +16,7 @@ double area(double l, double h,string figura){
     else if(figura=="Triangulo")
         respuesta=(l*h)/2;
     else{
-        cout<<"no es valida"<<endl
+        cout<<"no es valida"<<endl;
         respuesta =0;
     }
     
@@ -28,6 +28,8 @@ double area(double l, double h,string figura){
 int main() {
    
     cout << "EL area del circulo es: " << area(6) << endl;
+    cout<< "El area es "<<area(6,8,"Rectangulo")<<endl;
+    cout<< "El area es "<<area(6,8,"Triangulo")<<endl;
 
     return 0;
 }
