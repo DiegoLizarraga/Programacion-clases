@@ -1,7 +1,7 @@
-#include <iostream> // Para operaciones de entrada/salida
+#include <iostream> 
 #include <cmath>    // Para funciones matemáticas como sqrt y pow
 
-using namespace std; // Evita el prefijo std:: para elementos de la biblioteca estándar
+using namespace std; 
 
 // Clase base que representa un punto en un espacio bidimensional con coordenadas x e y
 class Punto2D {
