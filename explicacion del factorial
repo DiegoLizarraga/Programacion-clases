@@ -1,0 +1,33 @@
+
+#include <iostream>
+//se ejemplifica con las formulas de recurrencia
+int main()
+{
+	int factorial(int n) {
+		if(n==0) {
+			return 1;
+			/*n=0 t=1 */ 
+		} else {
+			return 1*factorial(n-1);
+			/*t(n-1)+1 
+			
+			a que equivale sutu: t(n-2)  t(n-3)+n-1
+			
+			T(n-3)+2+1
+			t(n-3)+3
+			
+			se genera un patron 
+			
+			T(n)= T(n-i)+i  relacion con el incremento del tiempo
+			
+			i=n es cuando se llega al caso base
+			
+			T(n) = T(n-n)+n
+			t(n)= n+1		
+			0(n) esto dice que es lineal
+			*/
+		}
+
+	}
+
+}
