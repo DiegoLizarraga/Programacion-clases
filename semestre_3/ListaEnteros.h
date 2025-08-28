@@ -11,6 +11,12 @@ Class ListaEnteros {
         ListaEnteros(int length); //constructor
         ListaEnteros(int length,int valores[]); //constructor con arreglo
       
+     //implementar estos metodos
+     void imprime();
+     int busquedaSecuencial(int valor);
+     int busquedaBinaria(int valor);
+
+
 
 };
 

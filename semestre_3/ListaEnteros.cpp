@@ -18,6 +18,7 @@ ListaEnteros::ListaEnteros(int length, int valores[]:ListaEnteros(length)) { //r
     this->size = length;
     
 
-    //implementar
+   
+
 
 }
