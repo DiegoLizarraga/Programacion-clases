@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+typedef enum{
+CARRO,
+MOTO,
+CAMION
+}tipovehiculo;
+
+typedef struct
+{
+   tipovehiculo tipo;
+   int numpuertas;
+   int numcilindricas;
+   float cantcarga;
+}vehiculo;
+
+void imprimirInfo(const vehiculo *vehiculo){
+ switch (vehiculo -> tipo)
+ {
+ case CARRO:
+ printf("Numero de puertas: %d", vehiculo -> numpuertas);
+   break;
+ case MOTO:
+   printf("Numero de cilindricas: %d", vehiculo->numcilindricas);
+  break;
+case CAMION:
+   printf("Numero de carga: %d", vehiculo->cantcarga);
+ break;
+ default:
+   printf("Desconocido");
+   break;
+ }
+}
+
+
+int main(){
+   vehiculo carro;
+   vehiculo moto;
+   vehiculo camion;
+
+   carro.tipo= CARRO;
+   carro.numpuertas=4;
+
+   moto.tipo=MOTO;
+   carro.numcilindricas=1;
+
+   camion.tipo=CAMION;
+   camion.cantcarga=400;
+
+   //toca ver la funciones para imprimir
+
+   printf("Info de coche");
+   imprimirInfo(&carro)
+
+   printf("Numero de puertas: %d \n", carro.numpuertas);
+
+}
