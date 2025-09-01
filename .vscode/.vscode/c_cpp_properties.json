@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**"
             ],
-            "compilerPath": "c:\\Users\\DiegoB)\\Desktop\\Codigos en c\\.vscode\\c",
+            "compilerPath": "C:\\Users\\DiegoB)\\Desktop\\Codigos en c\\Programacion-clases\\.vscode\\c",
             "cStandard": "${default}",
             "cppStandard": "${default}",
             "intelliSenseMode": "windows-gcc-x64",

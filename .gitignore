@@ -1,0 +1,52 @@
+# Configuración de VS Code
+.vscode/
+
+# Archivos ejecutables
+*.exe
+*.out
+*.app
+
+# Archivos objeto
+*.o
+*.obj
+
+# Archivos de compilación
+build/
+debug/
+release/
+
+# Archivos temporales del compilador
+*.tmp
+*.temp
+
+# Archivos de depuración
+*.pdb
+*.ilk
+
+# Archivos de Make
+Makefile.user
+*.make
+
+# Archivos específicos de Windows
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# Archivos específicos de macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos específicos de Linux
+*~
+
+# Archivos de respaldo del editor
+*.bak
+*.swp
+*.swo
+
+# Archivos de caché
+*.cache
+
+# Logs
+*.log
