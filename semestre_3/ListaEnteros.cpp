@@ -42,15 +42,29 @@ ListaEnteros::ListaEnteros(int lenght, int valores[]):ListaEnteros(lenght){
                 if(this->valores[j] > this->valores[j+1]){
                     swap(j, j+1);
                     ordenados=false;
-                    
+
                 }
             }
         }
+        if(ordenados) break;
     }
 
 
 }
 
+
+void ListaEnteros::selectionSort() {
+    //ordenar el arreglo con el metodo de seleccion
+    for(int i=0; i<size-1; i++){
+        int min = i;
+        for(int j=i+1; j<size; j++){
+            if(this->valores[j] < this->valores[min]){
+                min = j;
+            }
+        }
+        swap(i, min);
+    }
+}
 
 
 

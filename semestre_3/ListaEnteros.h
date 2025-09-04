@@ -2,7 +2,7 @@
 #define LISTAENTEROS_H
 
 
-Class ListaEnteros {
+Class ListaEnteros{
     private:
         int* valores; //puntero a int con un apuntador
         int size,  //numero de valores almacenados
@@ -15,6 +15,8 @@ Class ListaEnteros {
      void imprime();
      int busquedaSecuencial(int valor);
      int busquedaBinaria(int valor);
+    void bubleSort();
+    void selectionSort();
 
 
 
