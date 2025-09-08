@@ -17,7 +17,8 @@ Class ListaEnteros{
      int busquedaBinaria(int valor);
     void bubleSort();
     void selectionSort();
-
+    void insertionSort();
+    void mergeSort();
 
 
 };
