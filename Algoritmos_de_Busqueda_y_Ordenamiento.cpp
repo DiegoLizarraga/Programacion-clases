@@ -3,151 +3,165 @@
 using namespace std;
 
 /*
- * Matrícula: [TU_MATRÍCULA]
- * Nombre: [TU_NOMBRE]
- * 
- * Programa que implementa algoritmos de ordenamiento y búsqueda
- * contando las comparaciones específicas de cada algoritmo.
+ Autor: Diego Martin Lizarraga Sanchez  
+ A01647334
  */
-
-/**
- * Ordenamiento por inserción
- * Complejidad: O(n²) en el peor caso, O(n) en el mejor caso
- * @param arr: vector a ordenar
- * @return: número de comparaciones realizadas
- */
-int ordenaInsercion(vector<int>& arr) {
-    int comparaciones = 0;
-    int n = arr.size();
-    
-    for (int i = 1; i < n; i++) {
-        int key = arr[i];
-        int j = i - 1;
-        
-        // Contar comparaciones para determinar si hacer intercambio
-        while (j >= 0 && (++comparaciones, arr[j] > key)) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = key;
-    }
-    return comparaciones;
-}
-
-/**
- * Ordenamiento burbuja
- * Complejidad: O(n²)
- * @param arr: vector a ordenar
- * @return: número de comparaciones realizadas
- */
-int ordenaBurbuja(vector<int>& arr) {
-    int comparaciones = 0;
-    int n = arr.size();
-    
-    for (int i = 0; i < n - 1; i++) {
-        bool swapped = false;
-        for (int j = 0; j < n - i - 1; j++) {
-            // Contar comparaciones para determinar si hacer intercambio
-            comparaciones++;
-            if (arr[j] > arr[j + 1]) {
-                swap(arr[j], arr[j + 1]);
-                swapped = true;
-            }
-        }
-        if (!swapped) break;
-    }
-    return comparaciones;
-}
 
 // Variable global para contar comparaciones en merge sort
 int comparacionesMerge = 0;
 
 /**
- * Función auxiliar para mezclar dos subarreglos
- * @param arr: vector original
- * @param left: índice izquierdo
- * @param mid: índice medio
- * @param right: índice derecho
+ * Ordena un vector usando el algoritmo de inserción
+ * Complejidad: O(n²) en el peor caso, O(n) en el mejor caso
+ * @param arreglo: vector a ordenar por referencia
+ * @return: número de comparaciones realizadas para determinar intercambios
  */
-void merge(vector<int>& arr, int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
+int ordenaInsercion(vector<int>& arreglo) {
+    int comparaciones = 0;
+    int tamanio = arreglo.size();
     
-    vector<int> leftArr(n1), rightArr(n2);
-    
-    for (int i = 0; i < n1; i++)
-        leftArr[i] = arr[left + i];
-    for (int j = 0; j < n2; j++)
-        rightArr[j] = arr[mid + 1 + j];
-    
-    int i = 0, j = 0, k = left;
-    
-    // Contar comparaciones mientras ambas sublistas tienen elementos
-    while (i < n1 && j < n2) {
-        comparacionesMerge++; // Comparación para decidir de cuál sublista tomar
-        if (leftArr[i] <= rightArr[j]) {
-            arr[k] = leftArr[i];
-            i++;
-        } else {
-            arr[k] = rightArr[j];
-            j++;
+    for (int i = 1; i < tamanio; i++) {
+        int valorActual = arreglo[i];
+        int j = i - 1;
+        
+        // Contar comparaciones para determinar si hacer intercambio
+        while (j >= 0) {
+            comparaciones++;
+            if (arreglo[j] > valorActual) {
+                arreglo[j + 1] = arreglo[j];
+                j--;
+            } else {
+                break;
+            }
         }
-        k++;
+        arreglo[j + 1] = valorActual;
+    }
+    return comparaciones;
+}
+
+/**
+ * Ordena un vector usando el algoritmo burbuja
+ * Complejidad: O(n²)
+ * @param arreglo: vector a ordenar por referencia
+ * @return: número de comparaciones realizadas para determinar intercambios
+ */
+int ordenaBurbuja(vector<int>& arreglo) {
+    int comparaciones = 0;
+    int tamanio = arreglo.size();
+    
+    for (int i = 0; i < tamanio - 1; i++) {
+        bool huboCambio = false;
+        for (int j = 0; j < tamanio - i - 1; j++) {
+            // Contar comparaciones para determinar si hacer intercambio
+            comparaciones++;
+            if (arreglo[j] > arreglo[j + 1]) {
+                swap(arreglo[j], arreglo[j + 1]);
+                huboCambio = true;
+            }
+        }
+        if (!huboCambio) {
+            break;
+        }
+    }
+    return comparaciones;
+}
+
+/**
+ * Función auxiliar para mezclar dos subarreglos ordenados
+ * @param arreglo: vector original
+ * @param izquierda: índice izquierdo del subarreglo
+ * @param medio: índice medio que separa los dos subarreglos
+ * @param derecha: índice derecho del subarreglo
+ */
+void mezcla(vector<int>& arreglo, int izquierda, int medio, int derecha) {
+    int tamanioIzq = medio - izquierda + 1;
+    int tamanioDer = derecha - medio;
+    
+    vector<int> arregloIzq(tamanioIzq);
+    vector<int> arregloDer(tamanioDer);
+    
+    // Copiar elementos a arreglos temporales
+    for (int i = 0; i < tamanioIzq; i++) {
+        arregloIzq[i] = arreglo[izquierda + i];
+    }
+    for (int j = 0; j < tamanioDer; j++) {
+        arregloDer[j] = arreglo[medio + 1 + j];
     }
     
-    // Copiar elementos restantes (sin comparaciones adicionales)
-    while (i < n1) {
-        arr[k] = leftArr[i];
-        i++;
-        k++;
+    int indiceIzq = 0;
+    int indiceDer = 0;
+    int indiceMezcla = izquierda;
+    
+    // Mezclar los arreglos temporales de vuelta al arreglo original
+    while (indiceIzq < tamanioIzq && indiceDer < tamanioDer) {
+        comparacionesMerge++; // Comparación para decidir de cuál sublista tomar
+        if (arregloIzq[indiceIzq] <= arregloDer[indiceDer]) {
+            arreglo[indiceMezcla] = arregloIzq[indiceIzq];
+            indiceIzq++;
+        } else {
+            arreglo[indiceMezcla] = arregloDer[indiceDer];
+            indiceDer++;
+        }
+        indiceMezcla++;
     }
-    while (j < n2) {
-        arr[k] = rightArr[j];
-        j++;
-        k++;
+    
+    // Copiar elementos restantes del arreglo izquierdo
+    while (indiceIzq < tamanioIzq) {
+        arreglo[indiceMezcla] = arregloIzq[indiceIzq];
+        indiceIzq++;
+        indiceMezcla++;
+    }
+    
+    // Copiar elementos restantes del arreglo derecho
+    while (indiceDer < tamanioDer) {
+        arreglo[indiceMezcla] = arregloDer[indiceDer];
+        indiceDer++;
+        indiceMezcla++;
     }
 }
 
 /**
  * Función recursiva de merge sort
- * @param arr: vector a ordenar
- * @param left: índice izquierdo
- * @param right: índice derecho
+ * @param arreglo: vector a ordenar
+ * @param izquierda: índice izquierdo del subarreglo
+ * @param derecha: índice derecho del subarreglo
  */
-void mergeSortRecursive(vector<int>& arr, int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSortRecursive(arr, left, mid);
-        mergeSortRecursive(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+void mergeSortRecursivo(vector<int>& arreglo, int izquierda, int derecha) {
+    if (izquierda < derecha) {
+        int medio = izquierda + (derecha - izquierda) / 2;
+        mergeSortRecursivo(arreglo, izquierda, medio);
+        mergeSortRecursivo(arreglo, medio + 1, derecha);
+        mezcla(arreglo, izquierda, medio, derecha);
     }
 }
 
 /**
- * Ordenamiento por mezcla
+ * Ordena un vector usando el algoritmo de mezcla (merge sort)
  * Complejidad: O(n log n)
- * @param arr: vector a ordenar
- * @return: número de comparaciones realizadas
+ * @param arreglo: vector a ordenar por referencia
+ * @return: número de comparaciones realizadas entre sublistas
  */
-int ordenaMerge(vector<int>& arr) {
+int ordenaMerge(vector<int>& arreglo) {
     comparacionesMerge = 0;
-    mergeSortRecursive(arr, 0, arr.size() - 1);
+    mergeSortRecursivo(arreglo, 0, arreglo.size() - 1);
     return comparacionesMerge;
 }
 
 /**
- * Búsqueda secuencial
+ * Realiza búsqueda secuencial de un valor en el vector
  * Complejidad: O(n)
- * @param arr: vector donde buscar
+ * @param arreglo: vector donde buscar (constante)
  * @param valor: valor a buscar
- * @param comparaciones: referencia para contar comparaciones
- * @return: posición del elemento o -1 si no se encuentra
+ * @param comparaciones: referencia para almacenar el número de comparaciones
+ * @return: posición del elemento (0-indexed) o -1 si no se encuentra
  */
-int busqSecuencial(const vector<int>& arr, int valor, int& comparaciones) {
+int busqSecuencial(const vector<int>& arreglo, int valor, int& comparaciones) {
     comparaciones = 0;
-    for (int i = 0; i < arr.size(); i++) {
+    int tamanio = arreglo.size();
+    
+    for (int i = 0; i < tamanio; i++) {
         comparaciones++; // Comparación para ver si encontró el valor
-        if (arr[i] == valor) {
+        if (arreglo[i] == valor) {
             return i;
         }
     }
@@ -155,35 +169,43 @@ int busqSecuencial(const vector<int>& arr, int valor, int& comparaciones) {
 }
 
 /**
- * Búsqueda binaria
+ * Realiza búsqueda binaria de un valor en el vector ordenado
  * Complejidad: O(log n)
- * @param arr: vector ordenado donde buscar
+ * @param arreglo: vector ordenado donde buscar (constante)
  * @param valor: valor a buscar
- * @param comparaciones: referencia para contar comparaciones
- * @return: posición del elemento o -1 si no se encuentra
+ * @param comparaciones: referencia para almacenar el número de comparaciones
+ * @return: posición del elemento (0-indexed) o -1 si no se encuentra
  */
-int busqBinaria(const vector<int>& arr, int valor, int& comparaciones) {
+int busqBinaria(const vector<int>& arreglo, int valor, int& comparaciones) {
     comparaciones = 0;
-    int left = 0, right = arr.size() - 1;
+    int izquierda = 0;
+    int derecha = arreglo.size() - 1;
     
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
+    while (izquierda <= derecha) {
+        int medio = izquierda + (derecha - izquierda) / 2;
         
         comparaciones++; // Comparación para ver si encontró el valor
-        if (arr[mid] == valor) {
-            return mid;
+        if (arreglo[medio] == valor) {
+            return medio;
         }
         
         comparaciones++; // Comparación para decidir hacia qué lado buscar
-        if (arr[mid] < valor) {
-            left = mid + 1;
+        if (arreglo[medio] < valor) {
+            izquierda = medio + 1;
         } else {
-            right = mid - 1;
+            derecha = medio - 1;
         }
     }
     return -1;
 }
 
+/**
+ * Función principal que ejecuta el programa
+ * Lee datos, ordena con diferentes algoritmos, cuenta comparaciones
+ * y responde consultas de búsqueda
+ */
+ 
+ 
 int main(){
 	vector<int> v1, v2, v3;
 	int n, dato;
@@ -206,4 +228,5 @@ int main(){
 		pos = busqBinaria(v1, dato, cantBB);
 		cout << pos << " " << cantBS << " " << cantBB << endl; 
 	}
+return 0;	
 }
