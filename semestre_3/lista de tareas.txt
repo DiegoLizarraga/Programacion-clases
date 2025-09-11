@@ -1,0 +1,239 @@
+# 📋 Lista de Tareas - Sistema FRAP
+
+## 🛠️ **CONFIGURACIÓN INICIAL**
+
+### **Backend (PHP + MySQL)**
+- [ ] Instalar XAMPP/LAMP en Ubuntu Server
+- [ ] Crear base de datos MySQL "frap_db"
+- [ ] Instalar PhpSpreadsheet via Composer
+- [ ] Configurar conexión a base de datos
+- [ ] Crear tabla usuarios (roles: manager, maestro, alumno)
+- [ ] Crear tabla reportes_frap
+- [ ] Crear tabla signos_vitales
+- [ ] Crear tabla medicamentos
+- [ ] Crear tabla intervenciones
+
+### **Frontend (Flutter)**
+- [ ] Crear proyecto Flutter nuevo
+- [ ] Configurar dependencias (http, image_picker, signature)
+- [ ] Crear estructura de carpetas (models, services, screens)
+- [ ] Configurar routing entre pantallas
+
+---
+
+## 👥 **SISTEMA DE USUARIOS**
+
+### **Autenticación**
+- [ ] Crear pantalla de login
+- [ ] Implementar validación de credenciales
+- [ ] Crear sistema de roles (manager/maestro/alumno)
+- [ ] Implementar logout seguro
+
+### **Gestión de Usuarios**
+- [ ] CRUD usuarios (solo para manager)
+- [ ] Asignar roles a usuarios
+- [ ] Pantalla de perfil de usuario
+
+---
+
+## 📝 **FORMULARIO FRAP**
+
+### **Datos Básicos del Servicio**
+- [ ] Crear formulario datos del servicio
+- [ ] Campos: delegación, base, folio, estado, fecha
+- [ ] Cronometría (6 campos de hora)
+- [ ] Validación de campos obligatorios
+
+### **Datos del Paciente**
+- [ ] Formulario información personal
+- [ ] Selector de género y edad
+- [ ] Campos de ubicación del servicio
+- [ ] Geolocalización (latitud/longitud)
+
+### **Evaluaciones Médicas**
+- [ ] Formulario evaluación primaria
+- [ ] Formulario evaluación secundaria
+- [ ] Signos neurológicos (pupilas)
+- [ ] Auscultación (pulmones y corazón)
+
+### **Signos Vitales**
+- [ ] Tabla dinámica para registrar por hora
+- [ ] Campos: FC, FR, TAS, TAD, TAM, SaO2, TEMP, GLUC
+- [ ] Escala de Glasgow (Motor, Ocular, Verbal)
+- [ ] Botón agregar/eliminar registro
+
+### **Hallazgos Físicos**
+- [ ] Checkboxes para lesiones con códigos
+- [ ] 15 tipos de hallazgos (D, C, A, P, Q, L, AB, E, CR, EN, DO, PA, AL, PR, MO)
+
+### **Semiología del Dolor**
+- [ ] Localización del dolor
+- [ ] Escala EVA (0-10)
+- [ ] Características del dolor
+- [ ] Hora de inicio
+
+### **SAMPLER**
+- [ ] 6 campos: Signos, Alergias, Medicamentos, Padecimientos, Última comida, Eventos
+
+---
+
+## 🏥 **TRATAMIENTOS**
+
+### **Manejo de Vía Aérea**
+- [ ] Selector tipo de manejo
+- [ ] Dispositivos disponibles
+- [ ] Campos técnicos (diámetro, profundidad)
+- [ ] Número de intentos
+
+### **Oxigenoterapia**
+- [ ] Selector tipo de dispositivo
+- [ ] Campo litros por minuto
+
+### **Acceso Circulatorio**
+- [ ] Selector vía de acceso
+- [ ] Zona de colocación
+- [ ] Tipo de solución
+- [ ] Volumen infundido
+
+### **Medicamentos**
+- [ ] Tabla dinámica medicamentos
+- [ ] Campos: hora, medicamento, dosis, vía
+- [ ] Botón agregar/eliminar medicamento
+
+---
+
+## 📊 **CASOS ESPECIALES**
+
+### **Trauma**
+- [ ] Selector agente causal general
+- [ ] Selector agente causal específico
+- [ ] Intencionalidad (accidental/intencional)
+- [ ] Detalles del accidente
+
+### **Ginecológico**
+- [ ] Datos obstétricos (GESTA, PARA, etc.)
+- [ ] Control prenatal
+- [ ] Datos del producto
+- [ ] Escalas APGAR y Silvermann
+
+---
+
+## 📱 **FUNCIONALIDADES MÓVILES**
+
+### **Cámara y Fotos**
+- [ ] Integrar camera plugin
+- [ ] Botón tomar foto de la escena
+- [ ] Galería de fotos del incidente
+- [ ] Comprimir imágenes para almacenamiento
+
+### **Firmas Digitales**
+- [ ] Integrar signature plugin
+- [ ] Área de firma del paciente
+- [ ] Área de firma del testigo
+- [ ] Área de firma del paramédico
+- [ ] Guardar firmas como imagen
+
+### **Geolocalización**
+- [ ] Obtener coordenadas automáticamente
+- [ ] Mostrar ubicación en mapa
+- [ ] Permitir ajuste manual de ubicación
+
+---
+
+## 📄 **GENERACIÓN DE REPORTES**
+
+### **PDF Generation (Backend)**
+- [ ] Instalar TCPDF o similar
+- [ ] Crear plantilla PDF del FRAP
+- [ ] Mapear todos los campos del formulario
+- [ ] Incluir imágenes y firmas
+- [ ] Generar nombre único para archivos
+
+### **Descarga de Reportes**
+- [ ] API endpoint para generar PDF
+- [ ] Botón descargar reporte
+- [ ] Lista de reportes generados
+- [ ] Filtros por fecha/paciente
+
+---
+
+## 🗄️ **BASE DE DATOS**
+
+### **Tablas Principales**
+- [ ] usuarios (id, nombre, email, password, rol)
+- [ ] reportes (id, folio, fecha, usuario_id, datos_json)
+- [ ] pacientes (id, nombre, edad, genero, reporte_id)
+- [ ] signos_vitales (id, reporte_id, hora, fc, fr, tas, etc.)
+- [ ] medicamentos (id, reporte_id, hora, medicamento, dosis, via)
+- [ ] intervenciones (id, reporte_id, tipo, detalles)
+- [ ] firmas (id, reporte_id, tipo, imagen_path)
+- [ ] fotos (id, reporte_id, imagen_path, descripcion)
+
+### **APIs Backend**
+- [ ] POST /login - Autenticación
+- [ ] GET/POST/PUT/DELETE /usuarios - CRUD usuarios
+- [ ] GET/POST/PUT/DELETE /reportes - CRUD reportes
+- [ ] POST /upload-foto - Subir imágenes
+- [ ] POST /upload-firma - Subir firmas
+- [ ] GET /generar-pdf/{id} - Generar PDF
+
+---
+
+## 🔐 **SEGURIDAD Y VALIDACIONES**
+
+### **Validaciones Frontend**
+- [ ] Validar campos obligatorios
+- [ ] Validar formato de datos (email, teléfono)
+- [ ] Validar rangos de signos vitales
+- [ ] Confirmar antes de enviar reporte
+
+### **Seguridad Backend**
+- [ ] Hashear passwords
+- [ ] Validar tokens de sesión
+- [ ] Sanitizar inputs SQL
+- [ ] Validar permisos por rol
+
+---
+
+## 🚀 **DEPLOYMENT**
+
+### **Servidor Ubuntu**
+- [ ] Configurar Apache/Nginx
+- [ ] SSL certificate
+- [ ] Configurar PHP y MySQL
+- [ ] Permisos de archivos
+- [ ] Backup automático de DB
+
+### **App Flutter**
+- [ ] Build APK para Android
+- [ ] Configurar app icons
+- [ ] Permisos de cámara y ubicación
+- [ ] Testing en dispositivos reales
+
+---
+
+## ✅ **TESTING Y QA**
+
+### **Pruebas Funcionales**
+- [ ] Login con diferentes roles
+- [ ] Llenar formulario completo FRAP
+- [ ] Generar PDF correctamente
+- [ ] Subir fotos y firmas
+- [ ] Validar todos los campos
+
+### **Pruebas de Usuario**
+- [ ] Testing con paramédicos reales
+- [ ] Feedback de usabilidad
+- [ ] Ajustes basados en retroalimentación
+- [ ] Documentación de usuario
+
+---
+
+## 📈 **ORDEN RECOMENDADO DE DESARROLLO**
+
+1. **Semana 1-2**: Configuración inicial + Login + Base de datos
+2. **Semana 3-4**: Formulario básico FRAP + Validaciones
+3. **Semana 5-6**: Signos vitales + Medicamentos + Tratamientos
+4. **Semana 7-8**: Cámara + Firmas + Casos especiales
+5. **Semana 9-10**: Generación PDF + APIs
+6. **Semana 11-12**: Testing + Deployment + Refinamiento

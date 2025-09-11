@@ -55,52 +55,51 @@ ListaEnteros::ListaEnteros(int lenght, int valores[]):ListaEnteros(lenght){
 
 void ListaEnteros::selectionSort() {
     //ordenar el arreglo con el metodo de seleccion
-    int posMin;
-    for(int i=0; i<this->size-1; i++){
-        posMin =i;
-        for(int j=i+1; j<this->size; j++){
-            if(this->valores[j] < this->valores[posMin]){
-                posMin = j; //si hay un valor menor, actualizar la posicion
+    for(int i=0; i<size-1; i++){
+        int min = i;
+        for(int j=i+1; j<size; j++){
+            if(this->valores[j] < this->valores[min]){
+                min = j;
             }
         }
-        swap(i,posMin); //intercambiar el valor actual con el valor minimo    
-    }
-}
-void ListaEnteros::insertionSort() {
-    //ordenar el arreglo con el metodo de insercion
-    for(int i=1; i<this->size; i++){
-        for(int j=i-1; i<this->size; i++){
-            if(this->valores[j] > this->valores[j+1]){
-                swap(j, j+1);
-            }else{
-                break; //si ya esta en orden, salir del ciclo
-            }
-        }
+        swap(i, min);
     }
 }
 
-void ListaEnteros::mezcla(int ini, int fin){
-    //crea un arreglo de tamaño suficiente para mezclar los dos subarreglos
-    //quepan los elementos entre ini y fin
-    //pasar los elementos de manera ordenada enre ini y central y entre central+1 y fin
-    //regresar los elementos ya ordenados al arreglo original
-   
-    //completar
-
-}
-
-
-void ListaEnteros::mergeSort(int ini, int fin) {
-    //metodo auxiliar para mergeSort
+void ListaEnteros::mergesort(int ini, int fin) {
     if(ini < fin){
-        int central = (ini + fin) / 2;
-        mergeSort(ini, central); //ordenar la primera mitad
-        mergeSort(central+1, fin); //ordenar la segunda mitad
-        mezcla(ini, fin); //mezclar las dos mitades
+        int mid = (ini + fin) / 2;
+        mergesort(ini, mid);
+        mergesort(mid + 1, fin);
+        mezcla(ini, fin);
     }
 }
 
-void ListaEnteros::mergeSort() {
-    //ordenar el arreglo con el metodo de mezcla
-    mergeSort(0, this->size-1);
+void ListaEnteros::mergesort() {
+    mergesort(0, this->size - 1);
+}
+
+int ListaEnteros::particionar(int ini, int fin) {
+    int pivote = this->valores[fin];
+    int i = ini - 1;
+    for(int j = ini; j < fin; j++) {
+        if(this->valores[j] <= pivote) {
+            i++;
+            swap(i, j);
+        }
+    }
+    swap(i + 1, fin);
+    return i + 1;
+}
+
+void ListaEnteros::quicksort(int ini, int fin) {
+    if(ini < fin) {
+        int pi = particionar(ini, fin);
+        quicksort(ini, pi - 1);
+        quicksort(pi + 1, fin);
+    }
+}
+
+void ListaEnteros::quicksort() {
+    quicksort(0, this->size - 1);
 }
