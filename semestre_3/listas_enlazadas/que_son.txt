@@ -1,0 +1,36 @@
+las listas son parecidas a un vector un arreglo
+
+sirven para guardar datos
+
+para que las necesitamos?
+
+
+
+como se asigna la memoria
+es dinamica y estatica.
+
+
+areglos
+son estaticos, desperdcian la memoria
+
+
+---------------------------------------------------
+lista encadenada lineal (linked list)
+lso elementos se crean en el tiempo de ejecucion.
+
+toda la memoria esta pegada, es la posicon y tipo de dato.
+
+se crean los nodos pero me las va dando de donde los encuentre. 
+para pasarse de lugares se debe guardar la direccion para el siguiente elementos
+
+(esto es un nodo)
+info -> link
+elemento -> direccion del siguiente elemento
+
+se usa para cualquiera que requiera almacenar muhcas datos.
+
+la lista encadenada se uutiliza para guaradar cosas ordenas.
+
+el nodo de aqui apunta al siguiente. 
+
+uso de memoria-> se guarda el valor y la direccion de memoria. 
