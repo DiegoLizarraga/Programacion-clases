@@ -54,7 +54,7 @@ void MyLinkedList::insertFirst(int data) {
     }
 }
 
-
+//terminar el getat
 int MyLinkedList::getAt(int pos) {
 MyNodoLL* curr = this->head;
     for (int i = 0; i < pos; i++) {
@@ -66,4 +66,27 @@ MyNodoLL* curr = this->head;
 
 //implementar
 
+
 //investigar borrado de listas enlazadas
+
+Mylinkedlist::removeAt(int pos){
+    if (pos < 0 || pos >= this->size) {
+        throw out_of_range("Error: posicion invalida");
+    }
+    MyNodoLL* curr = this->head;
+    MyNodoLL* prev = nullptr;
+    for (int i = 0; i < pos; i++) {
+        prev = curr;
+        curr = curr->next;
+    }
+    if (prev == nullptr) {
+        this->head = curr->next;
+    } else {
+        prev->next = curr->next;
+    }
+    if (curr == this->tail) {
+        this->tail = prev;
+    }
+    delete curr;
+    this->size--;
+}

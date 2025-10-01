@@ -42,6 +42,7 @@ class MYLINKEDLIST_H {
     void insertFirst(int data);
     void insertLast(int data);
     void insertAt(int pos, int data);
+    void removeAt(int pos);
   
 
 };       
