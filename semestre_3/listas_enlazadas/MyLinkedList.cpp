@@ -1,27 +1,39 @@
+// Diego Martin Lizarraga Sanchez - A01647334
 #include "MyLinkedList.h"
 
 using namespace std;
 
+// Constructar 
 MyLinkedList::MyLinkedList() {
     this->size = 0;
     this->head = this->tail = nullptr;
 
 }
 
+// Destructor - Complejidad: O(n)
+MyLinkedList::~MyLinkedList() {
+    MyNodoLL* curr = this->head;
+    while (curr != nullptr) {
+        MyNodoLL* temp = curr;
+        curr = curr->next;
+        delete temp;
+    }
+    this->head = this->tail = nullptr;
+    this->size = 0;
+}
 
-//metodo que regresa el tamano de la lista
+
+// Retorna el tamaño de la lista - Complejidad: O(1)
 int MyLinkedList::length() {
     return this->size;
 }
 
-
-//dice si tiene consas la lista
+// Verifica si la lista está vacía - Complejidad: O(1)
 bool MyLinkedList::isEmpty() {
-  return this->size == 0;
+    return this->size == 0;
 }
 
-
-//regresa el primer elemento
+// Retorna el primer elemento - Complejidad: O(1)
 int MyLinkedList::first() {
     if (this->size != 0) {
         return this->head->data;
@@ -31,7 +43,6 @@ int MyLinkedList::first() {
     }
     
 }
-
 
 //el del ultmo elemento ne la lista
 int MyLinkedList::last() {
@@ -44,6 +55,31 @@ int MyLinkedList::last() {
     
 }
 
+
+// Retorna el elemento en la posición pos - Complejidad: O(n)
+int MyLinkedList::getAt(int pos) {
+    if (pos < 0 || pos >= this->size) {
+        throw invalid_argument("Error: posicion invalida");
+    }
+    MyNodoLL* curr = this->head;
+    for (int i = 0; i < pos; i++) {
+        curr = curr->next;
+    }
+    return curr->data;
+}
+
+// Modifica el elemento en la posición pos - Complejidad: O(n)
+void MyLinkedList::setAt(int pos, int data) {
+    if (pos < 0 || pos >= this->size) {
+        throw invalid_argument("Error: posicion invalida");
+    }
+    MyNodoLL* curr = this->head;
+    for (int i = 0; i < pos; i++) {
+        curr = curr->next;
+    }
+    curr->data = data;
+}
+
 //insertar al inicio
 void MyLinkedList::insertFirst(int data) {
     MyNodoLL* nvo = new MyNodoLL(data, this->head);
@@ -54,21 +90,74 @@ void MyLinkedList::insertFirst(int data) {
     }
 }
 
-//terminar el getat
-int MyLinkedList::getAt(int pos) {
-MyNodoLL* curr = this->head;
-    for (int i = 0; i < pos; i++) {
-        curr = curr->next;
+// Inserta un elemento al final - Complejidad: O(1)
+void MyLinkedList::insertLast(int data) {
+    MyNodoLL* nvo = new MyNodoLL(data, nullptr);
+    if (this->size == 0) {
+        this->head = this->tail = nvo;
+    } else {
+        this->tail->next = nvo;
+        this->tail = nvo;
     }
-    return curr->data;
+    this->size++;
 }
 
+// Inserta un elemento en la posición pos - Complejidad: O(n)
+void MyLinkedList::insertAt(int pos, int data) {
+    if (pos < 0 || pos > this->size) {
+        throw invalid_argument("Error: posicion invalida");
+    }
+    if (pos == 0) {
+        insertFirst(data);
+    } else if (pos == this->size) {
+        insertLast(data);
+    } else {
+        MyNodoLL* curr = this->head;
+        for (int i = 0; i < pos - 1; i++) {
+            curr = curr->next;
+        }
+        MyNodoLL* nvo = new MyNodoLL(data, curr->next);
+        curr->next = nvo;
+        this->size++;
+    }
+}
 
-//implementar
+// Elimina el primer elemento - Complejidad: O(1)
+void MyLinkedList::removeFirst() {
+    if (this->size == 0) {
+        throw invalid_argument("Error: lista vacia");
+    }
+    MyNodoLL* temp = this->head;
+    this->head = this->head->next;
+    delete temp;
+    this->size--;
+    if (this->size == 0) {
+        this->tail = nullptr;
+    }
+}
 
+// Elimina el último elemento - Complejidad: O(n)
+void MyLinkedList::removeLast() {
+    if (this->size == 0) {
+        throw invalid_argument("Error: lista vacia");
+    }
+    if (this->size == 1) {
+        delete this->head;
+        this->head = this->tail = nullptr;
+        this->size = 0;
+    } else {
+        MyNodoLL* curr = this->head;
+        while (curr->next != this->tail) {
+            curr = curr->next;
+        }
+        delete this->tail;
+        this->tail = curr;
+        this->tail->next = nullptr;
+        this->size--;
+    }
+}
 
-//investigar borrado de listas enlazadas
-
+// Elimina el elemento en la posición pos - Complejidad: O(n)
 Mylinkedlist::removeAt(int pos){
     if (pos < 0 || pos >= this->size) {
         throw out_of_range("Error: posicion invalida");
@@ -89,4 +178,14 @@ Mylinkedlist::removeAt(int pos){
     }
     delete curr;
     this->size--;
+}
+
+// Sobrecarga del operador << - Complejidad: O(n)
+ostream& operator<<(ostream& os, const MyLinkedList& ll) {
+    MyNodoLL* curr = ll.head;
+    while (curr != nullptr) {
+        os << curr->data << ",";
+        curr = curr->next;
+    }
+    return os;
 }
