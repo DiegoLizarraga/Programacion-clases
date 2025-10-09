@@ -1,0 +1,41 @@
+los arboles tienen una estructura jerarquica
+
+que tiene con ancestros e hijos.
+
+
+
+
+nodo ancestro: 
+nodo desendiente:
+subarbol:todos los nodos decendientes por la izquierda o derecha
+
+
+tiene altura y niveles.
+
+la altura del numeros de nodos de la raiz al nodo mas lejano-> la altura es la cantidad de niveles
+
+
+cosas comunes en arboles>
+
+-enumerar todos los elementos
+-buscar un elemento (que propiedades tiene, saber si derecha o izquierda)
+-dado un nodo, lista los hijos 
+-borrar un elemento (para borralo debo re acomodar acorde a las caracteristica(se puede podar desconectando))
+-eliminar un subarbol
+-añadir un subarbol
+-encontrar el padre de cualquier nodo
+
+como implementarlo
+························································
+-memoria estatica en un arreglo
+-memoria dinamica
+
+························································
+
+
+tipos de arboles
+binario
+rojo-negro
+abb (cada nodo debe tener 0,1,2)(lso decendientes izquierdos deben teer un valor menor al padre )(los desendientes derechos deben tener valor mayor al padre)
+
+
