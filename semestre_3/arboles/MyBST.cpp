@@ -1,7 +1,31 @@
 /*
- * Descripción: Implementación de los métodos del Árbol Binario de Búsqueda
- * Autor: [Tu nombre y matrícula]
- * Fecha: 18/10/2025
+    Implementación de los métodos del Arbol Binario de Búsqueda
+ * Análisis de rendimiento de los métodos:
+ *
+ * visit() - Recorridos preorder, inorder, postorder:
+ *   Tiempo estimado: O(n), donde n es el número de nodos
+ *   Explicación: Se visita cada nodo una sola vez
+ *
+ * level() - Recorrido por niveles:
+ *   Tiempo estimado: O(n)
+ *   Explicación: Se recorren todos los nodos usando una cola
+ *
+ * height() - Altura del árbol:
+ *   Tiempo estimado: O(n) en el peor caso, O(log n) si el árbol está balanceado
+ *   Explicación: Puede requerir revisar todos los nodos si el árbol está desbalanceado
+ *
+ * ancestors() - Ancestros de un nodo:
+ *   Tiempo estimado: O(h), donde h es la altura del árbol
+ *   Explicación: Se recorre desde la raíz hasta el nodo buscado
+ *
+ * whatLevelAmI() - Nivel de un nodo:
+ *   Tiempo estimado: O(h)
+ *   Explicación: Similar a una búsqueda, se cuenta cuántos niveles se bajan
+ *
+ * remove() - Eliminar un nodo:
+ *   Tiempo estimado: O(h)
+ *   Explicación: Se busca el nodo y, si tiene dos hijos, se reemplaza con el predecesor
+ *   Nota: El predecesor es el nodo más grande del subárbol izquierdo
  */
 
 #include "MyBST.h"
@@ -123,6 +147,12 @@ MyNodeBST* MyBST::findMin(MyNodeBST* current) {
  * Parámetro data: valor a eliminar
  * Parámetro current: referencia al puntero del nodo actual
  * Retorna: true si se eliminó, false si no existía
+ * Complejidad: O(h) donde h es la altura del árbol
+ * Buscar el nodo O(h) + buscar predecesor en caso de 2 hijos O(h) = O(h)
+ * Peor caso O(n) en árbol degenerado, O(log n) en árbol balanceado
+ * 
+ * IMPORTANTE: Para nodos con dos hijos se utiliza el PREDECESOR
+ * (nodo más grande del subárbol izquierdo, el rightmost del left child)
  */
 bool MyBST::remove(int data, MyNodeBST*& current) {
     if (current == nullptr) {
@@ -134,29 +164,39 @@ bool MyBST::remove(int data, MyNodeBST*& current) {
     } else if (data > current->data) {
         return remove(data, current->right);
     } else {
+        // Caso 1: Nodo hoja (sin hijos)
         if (current->left == nullptr && current->right == nullptr) {
             delete current;
             current = nullptr;
             this->size--;
             return true;
-        } else if (current->left == nullptr) {
+        }
+        // Caso 2: Nodo con un hijo derecho
+        else if (current->left == nullptr) {
             MyNodeBST* temp = current;
             current = current->right;
             delete temp;
             this->size--;
             return true;
-        } else if (current->right == nullptr) {
+        }
+        // Caso 3: Nodo con un hijo izquierdo
+        else if (current->right == nullptr) {
             MyNodeBST* temp = current;
             current = current->left;
             delete temp;
             this->size--;
             return true;
-        } else {
+        }
+        // Caso 4: Nodo con dos hijos - USAR PREDECESOR
+        else {
+            // El predecesor es el nodo más a la derecha del subárbol izquierdo
             MyNodeBST* predecessor = current->left;
             while (predecessor->right != nullptr) {
                 predecessor = predecessor->right;
             }
+            // Copiar el valor del predecesor al nodo actual
             current->data = predecessor->data;
+            // Eliminar el predecesor recursivamente
             return remove(predecessor->data, current->left);
         }
     }
@@ -174,6 +214,7 @@ bool MyBST::remove(int data) {
 /*
  * Recorrido preorden (versión privada recursiva)
  * Parámetro current: nodo actual
+ * Complejidad: O(n) - visita cada nodo una vez
  */
 void MyBST::preorder(MyNodeBST* current) {
     if (current != nullptr) {
@@ -193,6 +234,7 @@ void MyBST::preorder() {
 /*
  * Recorrido inorden (versión privada recursiva)
  * Parámetro current: nodo actual
+ * Complejidad: O(n) - visita cada nodo una vez
  */
 void MyBST::inorder(MyNodeBST* current) {
     if (current != nullptr) {
@@ -212,6 +254,7 @@ void MyBST::inorder() {
 /*
  * Recorrido postorden (versión privada recursiva)
  * Parámetro current: nodo actual
+ * Complejidad: O(n) - visita cada nodo una vez
  */
 void MyBST::postorder(MyNodeBST* current) {
     if (current != nullptr) {
@@ -231,6 +274,7 @@ void MyBST::postorder() {
 /*
  * Recorrido por niveles
  * Imprime los elementos separados por comas
+ * Complejidad: O(n) - cada nodo se encola y desencola una vez
  */
 void MyBST::level() {
     if (this->root == nullptr) {
@@ -275,6 +319,8 @@ void MyBST::visit(int type) {
  * Calcula la altura de un subárbol (versión privada recursiva)
  * Parámetro current: raíz del subárbol
  * Retorna: altura del subárbol
+ * Complejidad: O(n) peor caso (árbol degenerado), O(n) en general
+ * ya que debe visitar todos los nodos para determinar la altura
  */
 int MyBST::height(MyNodeBST* current) {
     if (current == nullptr) {
@@ -302,6 +348,8 @@ int MyBST::height() {
 /*
  * Imprime los ancestros de un nodo
  * Parámetro data: valor del nodo
+ * Complejidad: O(h) donde h es la altura del árbol
+ * Peor caso O(n) en árbol degenerado, O(log n) en árbol balanceado
  */
 void MyBST::ancestors(int data) {
     if (this->root == nullptr || !search(data)) {
@@ -330,6 +378,8 @@ void MyBST::ancestors(int data) {
  * Encuentra el nivel de un nodo en el árbol
  * Parámetro data: valor a buscar
  * Retorna: nivel del nodo (0 para raíz), -1 si no existe
+ * Complejidad: O(h) donde h es la altura del árbol
+ * Peor caso O(n) en árbol degenerado, O(log n) en árbol balanceado
  */
 int MyBST::whatLevelAmI(int data) {
     if (this->root == nullptr) {

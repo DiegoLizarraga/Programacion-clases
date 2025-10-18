@@ -1,7 +1,7 @@
 /*
- * Implementacion de un Arbol Binario de BUsqueda (BST)
- * Autor: Diego Martin Lizarraga Sanchez A01647334
- * Fecha: 18/10/2025
+  (BST)
+ Autor: Diego Lizarraga A01647334
+  Fecha: 18/10/2025
  */
 
 #ifndef MYBST_H
