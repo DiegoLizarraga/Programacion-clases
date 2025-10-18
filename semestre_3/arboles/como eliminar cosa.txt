@@ -1,0 +1,70 @@
+el nodo hoja sin hijos solo lo desconectas.
+en otro caso es que se conecta lo que se quita.
+
+acorde a que tan cargado este.
+
+el predecesor es el mayor de los menores. se va a la izquerda y todo lo que pueda a al derecha
+el sucesor es el menor de los mayores. me voy a la derecha y todo lo que pueda a al izquierda. 
+
+
+depende la tecnica se borra donde este.
+
+funciona igual la forma de borras depende a cual lugar quieres estar.
+con complejidad de log(n)
+
+para el sucesor se hace lo contrario. se copia y se desconecta.
+
+····························
+REcorrido
+es numerar los elementos. 
+
+preorden
+inorden
+postorden
+
+ªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªªª
+REcorrido preorden
+
+visita el nodo raiz del arbol
+recorre en preorden el subarbol izqde nodo raiz
+recorre en preorden el subarbol derecho al nodo raiz.
+
+····························
+
+REcorrido inorden
+
+
+recore e inorden el subarbol izquerdo del nodo raiz
+visita el nodo raiz del arbol
+recorre en inorden el subarbol derecho del nodo
+
+los elementos quedan oredenados. en un abb los elementos se ordenan de menor a mayor.
+
+····························
+
+postorden 
+
+se recoren hijos de izquierda a derecha.
+recorre en pos el subarbol izquerdo del nodo raiz
+recorre en pos el subarbol derecho del nodo raiz
+visita el nodo raiz dell arbol.
+
+se burran de abaja arriba como una poda. 
+
+····························
+
+amplitud (arrina abajo izq y derecha)
+
+se utiliza una cola para este proceso
+isnerta el nodo raiz en una fila.
+miestras las fila no se vacie.
+se saca el elementos de la fila y procesa el nodo
+inserta en la fila 
+
+····························
+
+
+
+
+
+guapo el que lo lea
