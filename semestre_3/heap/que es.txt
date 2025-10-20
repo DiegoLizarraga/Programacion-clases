@@ -1,0 +1,43 @@
+
+
+##  1. Heap como estructura de datos (montículo)
+
+Un **heap** es una estructura de datos basada en un árbol binario que se usa para organizar elementos según su prioridad. Es muy útil cuando necesitas acceder rápidamente al elemento más grande o más pequeño.
+
+### Tipos de heap:
+- **Min-heap**: el valor más pequeño está en la raíz.
+- **Max-heap**: el valor más grande está en la raíz.
+
+### Propiedades:
+- Es un **árbol binario completo**: todos los niveles están llenos excepto quizás el último, que se llena de izquierda a derecha.
+- No es un árbol ordenado como el árbol binario de búsqueda. Solo se garantiza que el padre tenga una relación de orden con sus hijos (mayor o menor).
+
+### Operaciones comunes:
+- **Insertar**: se agrega el nuevo elemento al final y se “reacomoda” el árbol para mantener la propiedad del heap.
+- **Eliminar la raíz**: se elimina el elemento de mayor o menor prioridad (según el tipo de heap) y se reorganiza el árbol.
+- **Peek**: ver el elemento de mayor o menor prioridad sin eliminarlo.
+
+### Aplicaciones:
+- **Colas de prioridad**: donde los elementos se procesan según su importancia.
+- **Algoritmos como Heapsort**: para ordenar elementos eficientemente.
+- **Algoritmo de Dijkstra**: para encontrar caminos más cortos en grafos.
+
+---
+
+ 2. Heap como zona de memoria
+
+En este contexto, el **heap** es una región de la memoria donde se almacenan datos que se crean dinámicamente durante la ejecución del programa.
+
+### Características:
+- Tú decides cuándo reservar y liberar memoria (por ejemplo, con `new` y `delete` en C++).
+- Es más flexible que el **stack**, pero también más propenso a errores como fugas de memoria si no se libera correctamente.
+- En lenguajes como Python o Java, el recolector de basura se encarga de liberar memoria automáticamente.
+
+### Diferencias con el stack:
+| Característica       | Heap                          | Stack                         |
+|----------------------|-------------------------------|-------------------------------|
+| Gestión              | Manual o automática (según lenguaje) | Automática                    |
+| Velocidad            | Más lento                     | Más rápido                    |
+| Tamaño               | Más grande                    | Más limitado                  |
+| Uso típico           | Objetos, estructuras grandes  | Variables locales, llamadas a funciones |
+
