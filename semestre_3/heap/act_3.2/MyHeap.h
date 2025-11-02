@@ -1,15 +1,11 @@
 /*
  * MyHeap.h
- * Implementacion de un Max-Heap (fila priorizada)
- * de:Diego Lizarraga A01647334
- * Fecha: 2 de noviemnbre de 2025
- * 
- * Complejidad de operaciones:
- * push() - Mejor: O(1), Peor: O(log n)
- * pop() - O(log n)
- * top() - O(1)
- * isEmpty() - O(1)
- * length() - O(1)
+ * Implementación de un Heap (Fila Priorizada)
+ * Autor: Diego Lizarraga A01647334
+ * Fecha: 2/11/2025
+ * Un Heap es como una fila en el banco, pero en lugar de ser 
+ * "primero en entrar, primero en salir", aquí el que tiene MÁS PRIORIDAD
+ * (el número más grande) sale primero.
  */
 
 #ifndef MYHEAP_H
@@ -17,35 +13,35 @@
 
 class MyHeap {
 private:
-    int* values;      // Arreglo donde se guardaran los valores del HEAP
-    int size;         // Representa cuantos valores tiene almacenado el Heap
-    int len;          // Representa el tamaño o capacidad máxima actual del arreglo
+    int* values;      // Array donde guardamos los números
+    int size;         // Cuántos números tenemos guardados ahora
+    int len;          // Cuántos números podemos guardar en total
     
-    // Métodos auxiliares privados
-    void heapifyUp(int index);      // Reorder hacia arriba
-    void heapifyDown(int index);    // Reorder hacia abajo
-    void expand();                   // Expande el arreglo cuando sea necesario
+    // Métodos que nos ayudan a mantener el orden
+    void heapifyUp(int index);      // Sube un elemento si es necesario
+    void heapifyDown(int index);    // Baja un elemento si es necesario
+    void expand();                   // Agrandamos el array cuando está lleno
     
 public:
-    // Constructor: Inicializa el arreglo con tamaño 
+    // Creamos el Heap vacío
     MyHeap();
     
-    // Insertar un valor en la fila priorizada
+    // Agregamos un número al Heap
     void push(int n);
     
-    // Elimina un valor del heap
+    // Sacamos el número más importante (el más grande)
     void pop();
     
-    // Regresa quien es el siguiente elemento en salir
+    // Vemos cuál es el número más importante sin sacarlo
     int top();
     
-    // Verifica si la fila está vacía
+    // Preguntamos si el Heap está vacío
     bool isEmpty();
     
-    // Regresa la cantidad de datos que tiene el heap
+    // Vemos cuántos números tenemos guardados
     int length();
     
-    // Imprime los atributos del heap
+    // Mostramos lo que hay dentro del Heap
     void imprimir();
 };
 
