@@ -1,0 +1,79 @@
+una relacion entre clave valor
+
+se emplea en varias estructuras.
+
+
+se usa para los meses. implementandolo con el el string del mes ya se le adjunta el valor
+
+no es lo mismo que tokenizar, se va a partir el string en cada campo. es una transformacion del tipo de dato a algo numerico
+
+
+Ejemplo se hace un sistema para el gasto de impuestos. cada cliente se identifica con el rfc.
+
+
+se almacena mucha cantidad de varios datos. se puede usar estructuras, o podria un arbol o una linkedlist. array. 
+
+
+
+
+-------------------------------------------------------------------------------------------
+como funciona se almacena en una tabla 
+algo asi como un arreglo.
+cuando se implementa se hace una estructura de datos
+
+para saber donde esta un elemento X. se usa una funcion de dispersion, con una funcion h. es una aritmetica (+, - , *)
+hay una funcion que nos da la llave. da entre valores de 0. regresando valores en ese rango. 
+
+se quiere ver la entrada en una pocision. 
+
+en el sistema de rfc.
+se puede hacer una connversion de el afbeto de base 27 a base 10. 
+
+para que el valor sea unico y no se repita. se debe tomar el valor para el numero a la pocision
+
+no se conviene tner un arreglo tan grande.
+
+
+ejmplo rfc
+SAGE050923AHG
+
+20*37^0 + 1*37^1 + 6*37^2 + 5*37^3 ..... +7 *32^12
+
+4.608066409 * 10^15
+
+si quiero guardar necesesitaria un arreglo de ese tamano.
+eso es de orden 0^1
+
+pero pues no es viable.
+
+
+El hashing hace que el acceso de un indice en algo inmediato.
+
+
+la funcion de hash convierte una llave a un valor numerico. el problema es que puede ser un numero muy grande. 
+se debe usar una funcion de compresion. el numerote me lo hace algo manejable. casi siempre es el modulo el residuo de la division entera. siendo el modulo del tamano del arreglo
+
+
+pero hay otro problema. al usar esta compresion puede pasar que 2 valores diferentes, si a la llave le aplico eso. le puede pasar una colision cuando ambas llaves en la funcion pueden dar el mismo resultado.
+depende que tantas colisiones puede haber. evitar tener un colster el tener los datos pegaditos. 
+si los datos estan muy juntos, la probablidad de que caiga un valor, la probablidad es alta si tan pegados. debes manejar las colisiones.
+
+se debe, buscar, insertar y borrar. 
+
+las colisiones puede que que 2 llaves den un mismo indice. ambas son sinonimos si generan el mismo valor.
+tecnicas para las colisiones el direccionamiento abierto y direccionamiento por encadenamiento
+
+direccionamiento abierto> da una prueba lineal. para poder guardarlo si llega hasta el final se regresa. la ventaja es que es mmuy facil solo es sigueinte. la complejidad. es que deja muchos colsters. no deja ningun hueco libre. dando de o^1 a o^necesesitaria
+se puede tambien con la prueba cuadratica. se busca de x+1^2 a x+ 2^2. entre los brincos son mas grandes. dejando mas espacio.no crea coltees de primer orden pero si da colster de segundo orden. pero brincan igual. solo cuando coinciden pasa esos
+se puede el doble hashing esto para 2 llaves sinonimas. el salto = constante- (llave%constante). esto hace que sea menos probable que se hagan iguales. los brincos son distintos al final.
+
+direccionamiento por encadenamiento> se hace una lista enlazada por cada lugar de arreglo. la ventaja es que ahora no son tan relevantes los saltos. ahora ya no hace falta el recorrerlo lo hace directo. lo guardas en la lista de la direccion que le transformacion
+en caso de que tengas 10 espacios pero en una solo guardas todo, o tiene la lista de 1 millon y solo 5 datos. para saber el tamano adecuado para el arreglo. es como un cajon con folder adentro( asi buscas mas rapido)
+separate chainingz el hast nos da la lista del elemento si sale otro pues ponemos otro elemento.no importa el salto ni las pociciones. el tamano del arreglo es primo. el tamano del salto y el arreglo deben ser primos relativos.
+el factor de carga debe ser menos lleno porque si es 1 es muy probable. el factor de carga por direccionamiento no debe exeder el 0.5.
+
+
+para encadenamiento es lo que mas se utiliza. el abierto seria cunado es pocos numeros. tambien se debe considerar la memoria. ya que el encademiento usa mas espacio. el numero de elementos entre el tamano de la tabla.
+se usa el reashing provoca que se exeda el valor para el factor de carga. 
+
+
