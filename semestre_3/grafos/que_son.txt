@@ -1,0 +1,35 @@
+son relaciones de muchos a muchos, cirugias, calles, laberintos, amigos.
+son redes con muchos de muchos.
+
+es una red de elementos conectados entre si. un arbol es un caso particular de un arbol.
+
+
+
+Terminologia
+Grafo: conjunto de nodos
+Nodo: informacion de un grafo
+Arco: Liga que une dos nodos al grafo
+Nodos Adyacentes: dos nodos son Adyacentes si existe un arco 
+Camino: secuencia de nodos. en la que cada par de nodos
+
+
+
+hay camino simple(todos los nodos son diferentes), dirigido, no dirigido (no tiene direccion los arcos)
+
+
+grafos ponderados (el arco tiene un valor), ciclo(digrafo inicio y fin es el mismo).
+
+grafo conectado (ggrafo no dirigido): si hay un camnino de cualquier nodos
+
+digrafo fuertemente conectado (digrafo): si hay un camino desde cualquier nodo hacia cualquier otro.
+
+
+las matrices de adaycencia. em una bidimensional.
+
+se dice con quien esta conectado. 
+
+prox clase
+recorrido de grafos
+orden topologico, puntos de articulacion, camino de euler.
+
+solo estudiar recorridos
