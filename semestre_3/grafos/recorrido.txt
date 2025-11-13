@@ -1,0 +1,27 @@
+ nos auxiliamos de la marca de los vertices como visitamos o no visitamos
+ recursiva:
+ para cada nodo V en el grafo
+ 1- marca un ndoo, V, como visitado
+ 2-visita el nodo
+ 3- para cada vertice adyacente U a V que no haya sido visitada comenzar el recorrido en profundidad en un
+
+
+
+ Iterativa
+ utiliza una pila 
+ para cada nodo
+ regla 1: si es posible visita un vertice adacente no visitado, marcalo y metelo a la pila
+ regla 2: si no puedes seguir la regla 1m entocnes. su es posible , saca un vertice de la pila
+
+
+
+
+ recorrdio en amplitud.
+ utiliza una cola
+ 1. para cada nodo que no ha sido visitado en el grafo
+ si V no ha sido visitado agregar V a la cola
+ 2. marca a V como visitado
+ 3. mientras la cola no este vacia
+ quita un vertice u de la cola y meter a la cola los vertices Adyacentes a U no visitados y marcalos como visitados.
+
+ 
