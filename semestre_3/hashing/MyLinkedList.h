@@ -1,9 +1,6 @@
 /*
- * MyLinkedList.h - Versión modificada para HashTable
- * Soporta almacenar pares (string key, int value)
- * 
  * Modificado por: Diego Martin Lizarraga Sanchez - A01647334
- * Fecha: Noviembre 2025
+ * Fecha: 17 Noviembre 2025
  */
 
 #ifndef MYLINKEDLIST_H

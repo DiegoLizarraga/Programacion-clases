@@ -1,9 +1,6 @@
 /*
- * MyLinkedList.cpp - Versión modificada para HashTable
- * Implementación de métodos para manejar pares key-value
- * 
  * Modificado por: Diego Martin Lizarraga Sanchez - A01647334
- * Fecha: Noviembre 2025
+ * Fecha: 17 Noviembre 2025
  */
 
 #include "MyLinkedList.h"

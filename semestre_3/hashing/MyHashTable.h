@@ -3,7 +3,7 @@
  * Tabla hash con encadenamiento - Compatible con tu MyLinkedList existente
  * 
  * Autor: Diego Martin Lizarraga Sanchez - A01647334
- * Fecha: Noviembre 2025
+ * Fecha: 17 Noviembre 2025
  */
 
 #ifndef MYHASHTABLE_H

@@ -1,9 +1,6 @@
 /*
  * Versión modificada de MyNodoLL para tabla hash
  * Almacena pares (string key, int value)
- * 
- * INSTRUCCIONES: Modifica tu MyLinkedList.h para usar esta estructura
- * o crea una nueva clase MyHashLinkedList específica para la tabla hash
  */
 
 #ifndef MYNODOLL_HASHPAIR_H
