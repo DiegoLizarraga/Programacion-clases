@@ -1,0 +1,55 @@
+nos aydua a molderar sitaciones en la que una actividad requiere de otra para poder ejecutar y enconttar el orden en eqye se deben
+ejecutar las tareas respetar los prerrequisitos
+
+
+Algoritmo de Kahn
+
+Requerimos:
+
+Lista con los grados de entrada de cada nodo
+
+colaP: donde colocamos todos los nodos que tienen un grado de entrada igual a O
+
+colaR: resultado
+
+Mientras la cola no esté vacía
+
+V = colaP.dequeue()
+
+colaR.enqueue(V)
+
+Para cada nodo W adyacente a V
+
+Disminuir una unidad el grado de entrada W
+
+Si el grado de entrada W == 0 entonces colaP.enqueue(W)
+
+
+Grafo bipartito.
+
+
+Algoritmo Amplitud
+
+Para conocer si un grafo es bipartito se puede hacer basándose en un recorrido en amplitud.
+
+Coloreas el nodo inicial de un color y lo metes a una cola
+
+Mientras la cola no esté vacía
+
+Sacas un elemento U de la cola
+
+Para cada vértice V adyacente a U si el vértice no se ha coloreado, se colorea V de color contrario a Uy se mete a la cola
+
+Si ya ha sido coloreado entonces si color de U es igual a color de V regresar false.
+
+Regresar true.
+
+
+
+puntos de articulacion
+
+Un punto de articulación de un grafo no dirigido G es un vértice tal que si eliminamos ese nodo nos da como resultado dos o más grafos.
+
+Para saber si un nodo es punto de articulación se "elimina" el nodo y si el número de "grafos conectados" que contenía el grafo ha cambiado entonces el nodo es un punto de articulación. Puede hacerse tanto con búsqueda en amplitud como en profunidad.
+
+son importantes en las calles. se identifican en la fuerza bruta. si se hace el recorrido ya no continua y debe cosas que continuar es de articulacion
