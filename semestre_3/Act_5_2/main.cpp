@@ -119,7 +119,6 @@ void ordenarTodosLosRegistros(IPHashTable& tabla) {
  */
 void consultarIP(IPHashTable& tabla) {
     string ip;
-    cout << ip;
     cin >> ip;
     
     IPRecord* registro = tabla.get(ip);
@@ -156,7 +155,6 @@ int main() {
     
     while (continuar == 1) {
         consultarIP(tabla);
-        
         cout << endl;
         cin >> continuar;
         
@@ -206,4 +204,6 @@ int main() {
  *     Capítulo 11: Hash Tables
  * [2] GeeksforGeeks. Hashing with Separate Chaining.
  *     https://www.geeksforgeeks.org/hashing-set-2-separate-chaining/
+ * [3] stringstream in C++ and its Applications  para usar <sstream> 
+    https://www.geeksforgeeks.org/cpp/stringstream-c-applications/
  */

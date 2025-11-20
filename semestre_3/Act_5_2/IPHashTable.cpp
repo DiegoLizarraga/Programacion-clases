@@ -11,7 +11,7 @@ using namespace std;
 // Constructor
 IPHashTable::IPHashTable() {
     this->size = 0;
-    this->sizeA = 11;  // Número primo para mejor distribución
+    this->sizeA = 601;  // Número primo para mejor distribución
     this->tabla = new IPLinkedList[this->sizeA];
 }
 
