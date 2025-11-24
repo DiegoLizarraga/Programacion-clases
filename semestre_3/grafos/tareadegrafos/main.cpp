@@ -3,6 +3,7 @@
 #include <vector>
 
 using namespace std;
+//Diego Martin Lizarraga Sanchez A01647334
 
 int main() {
     // Ejemplo de matriz de adyacencia

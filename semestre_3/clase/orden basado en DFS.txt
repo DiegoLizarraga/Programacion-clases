@@ -1,0 +1,21 @@
+un dfs  y durante el recorrido se visitaron todos los adyacentes a un nodo se meten a una pila-
+
+
+el orden toppologico se obtiene al final cuando termina el dfs se hace pop de todos los elemetos en la pila hasta que quede vacio
+
+camino hamiltoniano
+se visitan todos los vertices solo 1 vez. no significa que tenga que recorrer todas las listas. 
+se mueve como si fuera una ruta para ver cual es el camnino mas corto
+
+con el backtraqin se puede hacer muy exponenecial. resuelve pero con n completo
+
+
+camnino eulerano
+ya no pasa con la vertices ahora pasa por las arirstas. como le haces para pasar por todas las lineas solo 1 vez. 
+
+ser remplazan por donde empezamos.
+existe un camino euleriano  si existen exactamente 2 vertices ccon numero impar de arcos. 
+El chiste es llegar a todas una vez 
+
+eso era el ultimo tema???????
+
